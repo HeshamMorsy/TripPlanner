@@ -224,6 +224,7 @@ public class AddTripActivity extends AppCompatActivity implements DatePickerDial
                                 progressDialog();
                                 saveOneWayTrip();
                                 dialog.dismiss();
+                                emptyViews();
                                 startActivity(new Intent(AddTripActivity.this, MainActivity.class));
                             }else{
                                 Toast.makeText(AddTripActivity.this, "trip time and date should be in future", Toast.LENGTH_SHORT).show();
@@ -244,6 +245,7 @@ public class AddTripActivity extends AppCompatActivity implements DatePickerDial
                             if(isDateValid() && isRoundDateValid()) {
                                 progressDialog();
                                 saveOneWayTrip();
+                                emptyViews();
                                 saveReturnTrip();
                             }else{
                                 Toast.makeText(AddTripActivity.this, "trip time and date should be in future & return trip should be after the trip time", Toast.LENGTH_SHORT).show();
@@ -1025,5 +1027,12 @@ public class AddTripActivity extends AppCompatActivity implements DatePickerDial
         dialog = new ProgressDialog(AddTripActivity.this);
         dialog.setMessage("please wait..");
         dialog.show();
+    }
+
+    public void emptyViews(){
+        trip_name.setText("");
+        start_point.setText("");
+        end_point.setText("");
+        trip_notes.setText("");
     }
 }
